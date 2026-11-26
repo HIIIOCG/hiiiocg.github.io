@@ -1,0 +1,319 @@
+/* Product pages (/products/...). Follows the homepage: white and light grey,
+   green accents, black only for small labels. Colours mirror src/style/color.scss. */
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap");
+
+:root {
+  --main: #1fe686;
+  --mid: #ababab;
+  --black: #0f0f0f;
+  --light: #ececec;
+  --text: #1f1f1f;
+  --text-second: #939393;
+  --text-dark: #3e4147;
+  --radius: 18px;
+}
+
+/* Bilingual pairs: products.js sets <html data-lang> before first paint */
+html[data-lang="zh"] .en,
+html:not([data-lang="zh"]) .zh { display: none !important; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--light);
+  font-family: "Barlow", "Noto Sans TC", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+}
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+.dot { color: var(--main); }
+
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 60px; }
+
+/* ---------- Header (same items as the homepage bar) ---------- */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .06);
+}
+.top .wrap { display: flex; align-items: center; height: 72px; gap: 8px; }
+.top__logo { width: 120px; line-height: 0; margin-right: auto; }
+.top__logo img { width: 100%; height: auto; }
+.top__item {
+  position: relative;
+  display: inline-flex;  /* inline <a> ignores overflow:hidden, so the circle leaked out */
+  align-items: center;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  background: none;
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 999px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.top__item::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--main);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform .3s;
+}
+.top__item:hover, .top__item.is-current { color: #fff; }
+.top__item:hover::after, .top__item.is-current::after { transform: translate(-50%, -50%) scale(1); }
+.caret {
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform .3s;
+}
+.drop { position: relative; }
+.drop__panel {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  width: 340px;
+  padding: 10px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+.drop__panel a { display: block; padding: 12px 16px; border-radius: 12px; }
+.drop__panel a:hover, .drop__panel a[aria-current="page"] { background: var(--light); }
+.drop__panel strong { display: block; font-size: 18px; }
+.drop__panel span { font-size: 15px; color: var(--text-second); }
+
+.lang { display: flex; margin-left: 12px; border: 1px solid var(--light); border-radius: 999px; padding: 3px; }
+.lang button {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  border: 0;
+  background: none;
+  color: var(--text-second);
+  padding: 3px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+html[data-lang="en"] .lang [data-set-lang="en"],
+html[data-lang="zh"] .lang [data-set-lang="zh"] { background: var(--black); color: #fff; }
+
+/* ---------- Breadcrumb + product tabs ---------- */
+.crumbs { display: flex; flex-wrap: wrap; gap: 8px; padding: 36px 0 0; font-size: 15px; color: var(--text-second); }
+.crumbs a:hover { color: var(--text); }
+.crumbs span[aria-current] { color: var(--text); font-weight: 700; }
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding: 18px 0 28px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a {
+  flex-shrink: 0;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-dark);
+}
+.tabs a:hover { color: var(--black); box-shadow: inset 0 0 0 2px var(--main); }
+.tabs a[aria-current="page"] { background: var(--black); color: #fff; }
+
+/* ---------- Main panel ---------- */
+.panel {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.panel--title { display: block; padding: 0; background: none; margin-bottom: 28px; }
+.panel h1 { font-size: 64px; line-height: 1.05; }
+.panel--title h1 { font-size: 56px; }
+.tagline { margin-top: 18px; font-size: 22px; color: var(--text-dark); max-width: 22em; }
+
+.points { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; }
+.points li {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--light);
+  color: var(--text-dark);
+}
+.points li::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: var(--main);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--main);
+  color: #fff;
+  transition: transform .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--line { background: none; color: var(--text); box-shadow: inset 0 0 0 2px var(--light); }
+.btn--line:hover { box-shadow: inset 0 0 0 2px var(--main); }
+.btn--off { background: var(--light); color: var(--text-second); pointer-events: none; }
+
+.media { position: relative; border-radius: 14px; overflow: hidden; background: var(--light); }
+.media img { display: block; width: 100%; height: auto; }
+/* align-items: center keeps a shorter GIF at its own ratio when its grid
+   neighbour is taller (the default `stretch` pulled it to the row height). */
+.media--phone { display: flex; justify-content: center; align-items: center; padding: 28px; }
+.media--phone img { max-width: 260px; border-radius: 24px; }
+.media--empty { aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.media--empty::before {
+  content: "";
+  width: 40%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+
+/* Embedded YouTube video, 16:9 */
+.media--video { aspect-ratio: 16 / 9; background: var(--black); }
+.media--video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Turntable reel (3D Avatar): the clips play one after another, cross-fading.
+   #111 is the clips' own background, so the card and video are one surface. */
+.media--reel { aspect-ratio: 4 / 5; background: #111; }
+.reel__v {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .5s;
+}
+.reel__v.is-on { opacity: 1; }
+.reel__dots { position: absolute; right: 16px; bottom: 12px; display: flex; gap: 6px; }
+.reel__dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .35);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.reel__dots button:hover { transform: scale(1.3); }
+.reel__dots button[aria-current="true"] { background: var(--main); }
+
+/* Small black label, like a tag on the picture */
+.label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--black);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--main); }
+
+/* ---------- Gallery (three short captions) ---------- */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.gallery .media { background: #fff; }
+.gallery .media img { width: 100%; }
+.gallery--wide { grid-template-columns: 1fr 1fr; }
+.gallery--one { grid-template-columns: 1fr; }
+
+/* ---------- Product cards (index) ---------- */
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: #fff; border-radius: var(--radius); overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0, 0, 0, .08); }
+.card .media { border-radius: 0; aspect-ratio: 16 / 10; }
+.card .media img { height: 100%; object-fit: cover; }
+/* Not out yet: the whole card is faded, the placeholder ring is darker so it still reads */
+.card--soon { opacity: .5; }
+.card--soon:hover { opacity: .7; }
+/* Half-black. On the card it is full black under the card's 50% fade, which comes out the same. */
+.media--empty { background: rgba(15, 15, 15, .5) !important; }
+.card .media--empty { background: var(--black) !important; }
+.media--empty::before { border-color: var(--text-dark); }
+.card__body { padding: 24px 28px 28px; }
+.card h2 { font-size: 28px; }
+.card p { margin-top: 6px; color: var(--text-second); }
+
+/* ---------- Previous / next ---------- */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 0; }
+.pager a { background: #fff; border-radius: var(--radius); padding: 22px 28px; }
+.pager a:hover { box-shadow: inset 0 0 0 2px var(--main); }
+.pager small { display: block; font-size: 14px; color: var(--text-second); }
+.pager strong { font-size: 22px; }
+.pager .next { text-align: right; }
+
+/* ---------- Footer ---------- */
+.foot { padding: 72px 0 48px; color: var(--text-second); font-size: 15px; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 22px; }
+.foot a:hover { color: var(--text); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .wrap { padding: 0 30px; }
+  .panel { grid-template-columns: 1fr; gap: 36px; padding: 40px; }
+  .panel h1 { font-size: 48px; }
+  .top__item--page { display: none; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+  .top .wrap { height: 60px; }
+  .top__logo { width: 96px; }
+  .top__item { font-size: 15px; padding: 8px 12px; }
+  .lang { margin-left: 4px; }
+  .crumbs { padding-top: 24px; }
+  .panel { padding: 28px 22px; border-radius: 14px; }
+  .panel h1, .panel--title h1 { font-size: 38px; }
+  .tagline { font-size: 18px; }
+  .cards, .gallery, .gallery--wide, .gallery--one, .pager { grid-template-columns: 1fr; }
+  .pager .next { text-align: left; }
+  .card h2 { font-size: 24px; }
+}
+
+/* Mouse users: hovering PRODUCTS opens the panel */
+@media (hover: hover) and (min-width: 601px) {
+  .drop:hover .drop__panel { display: block; }
+  .drop:hover .caret { transform: rotate(180deg); }
+  /* invisible bridge over the gap between the button and the panel */
+  .drop__panel::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+}

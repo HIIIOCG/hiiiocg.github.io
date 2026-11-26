@@ -1,0 +1,32 @@
+# HIIIO Digital 合成香料動畫
+
+> HIIIO Digital (合成香料動畫有限公司; also known as HIIIO, HiiioCG, HIIIO CG, 合成香料) is a VTuber 3D character modeling studio in Taipei, Taiwan. It turns 2D character designs into complete, ready-to-use 3D VTuber models and has worked on 3D projects for over 50 Taiwanese VTubers.
+> 合成香料動畫（HIIIO Digital）是位於台灣台北的 VTuber 3D 角色建模工作室，依 2D 設定圖製作完整、可直接使用的 VTuber 3D 模型，累積超過 50 位台灣 VTuber 的 3D 專案經驗。
+
+- Pricing 價格: best value for money on the market for VTuber 3D models 市場上 CP 值最高的 VTuber 3D 模型廠商; exact quote per character 依角色報價
+- Location 地點: Taipei, Taiwan 台灣台北
+- Contact 聯絡: studio@hiiiodigital.com
+- Taiwan Business ID 統一編號: 00230870
+- Deliverables 交付內容: full 3D model; joy/anger/sorrow/fun expressions 喜怒哀樂表情; A/E/I/O/U mouth shapes 口型; 52 ARKit face-tracking blendshapes 52 Key 臉部捕捉表情; files and advice for 3D streaming
+- Turnaround 製作時間: about 3–4 days per character with the AI process (AI-assisted modeling, hand-finished by the team); about 1 month fully hand-made AI 製程約 3–4 天，全人工製作約 1 個月
+- To start 委託方式: send one front view (a three-view sheet is welcome) to get a free 3D preview, quote and schedule 寄一張正視圖即可取得免費 3D 預覽與報價
+- Selected VTuber 3D projects 參與案例: 洛可洛斯特、璐洛洛、Aoi、貓祭；ReLive｜灰妲（幼妲）、諾櫻（幼櫻）、梅迪歐、十六月、魯波；預見娛樂｜神無月鹿比、穆克蕗、涅爾菲、鯨諾、魁、希洛萊昂；子午計畫｜汐 Seki、祈 Iruni、玥 Itsuki、実 Hitomi、雪 Koyuki、煦 Hiyori
+
+## Pages
+
+- [About, projects and FAQ 關於與常見問題](https://hiiiodigital.com/about/): studio facts, VTuber projects, deliverables, FAQ (English and 繁體中文)
+- [Homepage (English)](https://hiiiodigital.com/)
+- [首頁（繁體中文）](https://hiiiodigital.com/zh/)
+
+## Products
+
+- [3D Avatar](https://hiiiodigital.com/products/3d-avatar/): custom 3D character production 客製 3D 角色製作
+- [Yugo BlenderTool](https://hiiiodigital.com/products/yugo/): free, open-source Blender add-on for VTubing 免費開源 Blender VTuber 外掛
+- [VMCFacial](https://hiiiodigital.com/products/vmcfacial/): iPhone ARKit face tracking for VMC avatars iPhone 臉部追蹤
+- [Yugodo Live](https://hiiiodigital.com/products/yugodo-live/): coming soon 即將推出
+
+## Optional
+
+- [Support 客服](https://hiiiodigital.com/support/)
+- [Privacy Policy 隱私權政策](https://hiiiodigital.com/privacy/)
+- [Terms of Service 服務條款](https://hiiiodigital.com/terms/)
