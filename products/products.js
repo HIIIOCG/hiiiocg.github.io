@@ -44,18 +44,38 @@
     }
   }
 
+  // Canonical follows the URL: /page/?lang=zh is the Chinese page, anything
+  // else (no ?lang, ?lang=en, other params) is the plain English URL. Set only
+  // here, never in the HTML, so the two never disagree.
+  function setCanonical() {
+    try {
+      var zh = normalize(new URLSearchParams(location.search).get('lang')) === 'zh'
+      var href = location.origin + location.pathname + (zh ? '?lang=zh' : '')
+      var link = document.querySelector('link[rel="canonical"]')
+      if (!link) {
+        link = document.createElement('link')
+        link.rel = 'canonical'
+        document.head.appendChild(link)
+      }
+      link.href = href
+    } catch (e) { /* ignore */ }
+  }
+
   function setLang(lang) {
     apply(lang)
     try { localStorage.setItem(KEY, lang) } catch (e) { /* ignore */ }
     try {
       var url = new URL(location.href)
-      url.searchParams.set('lang', lang)
+      if (lang === 'zh') url.searchParams.set('lang', 'zh')
+      else url.searchParams.delete('lang')
       history.replaceState(null, '', url)
     } catch (e) { /* ignore */ }
+    setCanonical()
   }
 
   // Runs in <head>, before the body paints, so there is no flash of the other language.
   apply(detect())
+  setCanonical()
 
   // Reel: [data-reel] lists clips; two <video>s take turns so the next clip is
   // loaded before it fades in. Dots jump to a clip. With reduced motion the
