@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VMCFacial Support</title>
+<style>
+:root { color-scheme: light dark; --text: #1d1d1f; --soft: #6e6e73; --line: #d2d2d7; --back: #ffffff; --link: #0066cc; }
+@media (prefers-color-scheme: dark) { :root { --text: #f5f5f7; --soft: #a1a1a6; --line: #424245; --back: #111112; --link: #4da3ff; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--back); color: var(--text); font: 17px/1.65 -apple-system, "Helvetica Neue", "PingFang TC", "PingFang SC", "Hiragino Sans", "Noto Sans CJK TC", sans-serif; }
+main { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-size: 15px; }
+a { color: var(--link); }
+section { padding-top: 24px; }
+section + section { margin-top: 48px; border-top: 1px solid var(--line); }
+h1 { font-size: 30px; line-height: 1.2; margin: 16px 0 8px; }
+h2 { font-size: 21px; line-height: 1.3; margin: 36px 0 8px; }
+p, ul, ol { margin: 0 0 14px; }
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<main>
+<nav>
+<a href="#en" lang="en">English</a>
+<a href="#zh-Hant" lang="zh-Hant">繁體中文</a>
+<a href="#zh-Hans" lang="zh-Hans">简体中文</a>
+<a href="#ja" lang="ja">日本語</a>
+</nav>
+<section id="en" lang="en">
+<h1>VMCFacial Support</h1>
+<p>VMCFacial tracks your face with an iPhone and sends the motion, as VMC protocol, to avatar software on your computer.</p>
+<h2>Getting started</h2>
+<ol>
+<li>On the computer, turn on VMC receiving in your avatar software and note its port (39539 unless you changed it).</li>
+<li>Put the iPhone and the computer on the same Wi-Fi.</li>
+<li>In VMCFacial, tap the magnifying glass and pick your computer, or type its IP address and check the port. Sending starts by itself: there is no start button, and the top of the screen shows "Sending".</li>
+<li>Hold your head straight, look at the screen with a relaxed face, and tap the round Calibrate button.</li>
+</ol>
+<h2>Common questions</h2>
+<p><strong>My computer is not in the list.</strong> Check that both are on the same Wi-Fi and that Local Network is allowed for VMCFacial in the iOS Settings app. A Windows computer only shows up when its network is set to Private. You can always type the computer's IP address instead.</p>
+<p><strong>It says "Port closed".</strong> The computer answered, but nothing is receiving VMC on that port. Turn on the VMC receiver in your avatar software and check the port number.</p>
+<p><strong>How do I stop sending?</strong> Delete the address at the top of the screen and tap Done on the keyboard, or leave the app. The app sends whenever an address is filled in, and starts again by itself the next time you open it. In iFacialMocap mode the app also sends to a program on your network that asks the iPhone for the data, with or without an address: to stop, switch back to VMC or leave the app.</p>
+<p><strong>The avatar suddenly stopped moving.</strong> Tap the reload button (the round arrow) at the right of the top bar. It drops the connection and opens a new one.</p>
+<p><strong>It says "Sending", but the avatar does not move.</strong> Check the port number on both sides, and check that the computer's firewall lets UDP through on that port. Only one program can receive on a port at a time.</p>
+<p><strong>The head moves but the expressions do not.</strong> Your model probably has no Perfect Sync expressions. In Settings, change Expressions to VRM Basic.</p>
+<p><strong>Left and right are swapped.</strong> Turn Mirror on or off in Settings.</p>
+<p><strong>The avatar looks sleepy or frowns when my face is relaxed.</strong> Calibrate again with a relaxed face.</p>
+<h2>Contact</h2>
+<p>Write to <a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a>.</p>
+<p><a href="privacy.html">Privacy Policy</a></p>
+</section>
+<section id="zh-Hant" lang="zh-Hant">
+<h1>VMCFacial 支援</h1>
+<p>VMCFacial 用 iPhone 追蹤你的臉，並把動作以 VMC 協定傳給電腦上的虛擬角色軟體。</p>
+<h2>開始使用</h2>
+<ol>
+<li>在電腦上，打開角色軟體的 VMC 接收功能，記下它的 Port（沒改過的話是 39539）。</li>
+<li>讓 iPhone 和電腦連到同一個 Wi-Fi。</li>
+<li>在 VMCFacial 點放大鏡，從清單選你的電腦，或直接輸入它的 IP 位址並確認 Port。傳送會自動開始，不用按任何鈕；畫面上方會顯示「傳送中」。</li>
+<li>頭擺正、看著螢幕、表情放鬆，點圓形的「校正」鈕。</li>
+</ol>
+<h2>常見問題</h2>
+<p><strong>清單裡沒有我的電腦。</strong> 請確認兩者連的是同一個 Wi-Fi，並且在 iOS「設定」App 裡允許 VMCFacial 使用區域網路。Windows 電腦的網路要設成「私人」才會出現。你也可以直接輸入電腦的 IP 位址。</p>
+<p><strong>顯示「Port 未開」。</strong> 那台電腦有回應，但那個 Port 上沒有程式在接收 VMC。請打開角色軟體的 VMC 接收功能，並確認 Port 號碼。</p>
+<p><strong>怎麼停止傳送？</strong> 把畫面上方的位址刪掉並按鍵盤上的「完成」，或離開 App。只要填了位址 App 就會傳送，下次打開時也會自動開始。在 iFacialMocap 模式下，同一個網路上向 iPhone 要求資料的程式也會收到資料，不論有沒有填位址；要停止請切回 VMC 或離開 App。</p>
+<p><strong>角色突然不動了。</strong> 點上方列最右邊的重新傳送鈕（圓形箭頭），App 會中斷連線再重新連一次。</p>
+<p><strong>顯示「傳送中」，但角色不動。</strong> 請確認兩邊的 Port 號碼一致，並確認電腦的防火牆有放行那個 Port 的 UDP。同一個 Port 同時只能有一個程式接收。</p>
+<p><strong>頭會動，但表情不動。</strong> 你的模型可能沒有 Perfect Sync 表情。請到「設定」把「表情格式」改成「VRM 基本表情」。</p>
+<p><strong>左右相反。</strong> 請在「設定」切換「鏡像」。</p>
+<p><strong>表情放鬆時，角色看起來想睡或皺眉。</strong> 請在表情放鬆時再校正一次。</p>
+<h2>聯絡方式</h2>
+<p>請來信：<a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a></p>
+<p><a href="privacy.html#zh-Hant">隱私權政策</a></p>
+</section>
+<section id="zh-Hans" lang="zh-Hans">
+<h1>VMCFacial 支持</h1>
+<p>VMCFacial 用 iPhone 追踪你的脸，并把动作以 VMC 协议发送给电脑上的虚拟形象软件。</p>
+<h2>开始使用</h2>
+<ol>
+<li>在电脑上，打开形象软件的 VMC 接收功能，记下它的端口（没改过的话是 39539）。</li>
+<li>让 iPhone 和电脑连到同一个 Wi-Fi。</li>
+<li>在 VMCFacial 点放大镜，从列表选你的电脑，或直接输入它的 IP 地址并确认端口。发送会自动开始，不用点任何按钮；画面上方会显示“发送中”。</li>
+<li>头摆正、看着屏幕、表情放松，点圆形的“校正”按钮。</li>
+</ol>
+<h2>常见问题</h2>
+<p><strong>列表里没有我的电脑。</strong> 请确认两者连的是同一个 Wi-Fi，并且在 iOS“设置”App 里允许 VMCFacial 使用本地网络。Windows 电脑的网络要设成“专用”才会出现。你也可以直接输入电脑的 IP 地址。</p>
+<p><strong>显示“端口未开”。</strong> 那台电脑有响应，但那个端口上没有程序在接收 VMC。请打开形象软件的 VMC 接收功能，并确认端口号。</p>
+<p><strong>怎么停止发送？</strong> 把画面上方的地址删掉并点键盘上的“完成”，或离开 App。只要填了地址 App 就会发送，下次打开时也会自动开始。在 iFacialMocap 模式下，同一网络上向 iPhone 请求数据的程序也会收到数据，不论有没有填地址；要停止请切回 VMC 或离开 App。</p>
+<p><strong>形象突然不动了。</strong> 点上方栏最右边的重新发送按钮（圆形箭头），App 会断开连接再重新连一次。</p>
+<p><strong>显示“发送中”，但形象不动。</strong> 请确认两边的端口号一致，并确认电脑的防火墙放行了那个端口的 UDP。同一个端口同时只能有一个程序接收。</p>
+<p><strong>头会动，但表情不动。</strong> 你的模型可能没有 Perfect Sync 表情。请到“设置”把“表情格式”改成“VRM 基本表情”。</p>
+<p><strong>左右相反。</strong> 请在“设置”切换“镜像”。</p>
+<p><strong>表情放松时，形象看起来犯困或皱眉。</strong> 请在表情放松时再校正一次。</p>
+<h2>联系方式</h2>
+<p>请来信：<a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a></p>
+<p><a href="privacy.html#zh-Hans">隐私政策</a></p>
+</section>
+<section id="ja" lang="ja">
+<h1>VMCFacial サポート</h1>
+<p>VMCFacial は iPhone で顔をトラッキングし、その動きを VMC プロトコルでパソコンのアバターソフトへ送信します。</p>
+<h2>はじめに</h2>
+<ol>
+<li>パソコンでアバターソフトの VMC 受信をオンにし、ポート番号を確認します（変更していなければ 39539）。</li>
+<li>iPhone とパソコンを同じ Wi-Fi に接続します。</li>
+<li>VMCFacial で虫めがねをタップしてパソコンを選ぶか、IP アドレスを直接入力してポートを確認します。送信は自動で始まります。ボタンを押す必要はなく、画面上部に「送信中」と表示されます。</li>
+<li>頭をまっすぐにして画面を見て、表情をリラックスさせ、丸い「キャリブレート」ボタンをタップします。</li>
+</ol>
+<h2>よくある質問</h2>
+<p><strong>一覧にパソコンが表示されない。</strong> 両方が同じ Wi-Fi に接続されているか、iOS の「設定」アプリで VMCFacial にローカルネットワークを許可しているかを確認してください。Windows パソコンは、ネットワークが「プライベート」に設定されている場合のみ表示されます。IP アドレスを直接入力することもできます。</p>
+<p><strong>「ポート閉」と表示される。</strong> パソコンは応答していますが、そのポートで VMC を受信しているソフトがありません。アバターソフトの VMC 受信をオンにして、ポート番号を確認してください。</p>
+<p><strong>送信を止めるには？</strong> 画面上部のアドレスを消去してキーボードの「完了」をタップするか、アプリを離れます。アドレスが入力されている間は送信が続き、次回アプリを開いたときも自動で始まります。iFacialMocap モードでは、アドレスの有無にかかわらず、同じネットワーク上で iPhone にデータを要求したソフトにも送信されます。止めるには VMC に切り替えるか、アプリを離れてください。</p>
+<p><strong>アバターが急に動かなくなった。</strong> 上部バーの右端にある「送信をやり直す」ボタン（丸い矢印）をタップします。接続を切って、新しく接続し直します。</p>
+<p><strong>「送信中」と表示されるのにアバターが動かない。</strong> 両側のポート番号が同じか、パソコンのファイアウォールがそのポートの UDP を通しているかを確認してください。1 つのポートで同時に受信できるソフトは 1 つだけです。</p>
+<p><strong>頭は動くのに表情が動かない。</strong> モデルがパーフェクトシンクの表情に対応していない可能性があります。「設定」で「表情の形式」を「VRM 基本表情」に変更してください。</p>
+<p><strong>左右が逆になる。</strong> 「設定」で「ミラー」を切り替えてください。</p>
+<p><strong>リラックスしているのに、アバターが眠そうに見えたり眉をひそめたりする。</strong> 表情をリラックスさせた状態で、もう一度キャリブレートしてください。</p>
+<h2>お問い合わせ</h2>
+<p>メール：<a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a></p>
+<p><a href="privacy.html#ja">プライバシーポリシー</a></p>
+</section>
+</main>
+</body>
+</html>

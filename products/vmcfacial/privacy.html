@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VMCFacial Privacy Policy</title>
+<style>
+:root { color-scheme: light dark; --text: #1d1d1f; --soft: #6e6e73; --line: #d2d2d7; --back: #ffffff; --link: #0066cc; }
+@media (prefers-color-scheme: dark) { :root { --text: #f5f5f7; --soft: #a1a1a6; --line: #424245; --back: #111112; --link: #4da3ff; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--back); color: var(--text); font: 17px/1.65 -apple-system, "Helvetica Neue", "PingFang TC", "PingFang SC", "Hiragino Sans", "Noto Sans CJK TC", sans-serif; }
+main { max-width: 720px; margin: 0 auto; padding: 24px 16px 64px; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-size: 15px; }
+a { color: var(--link); }
+section { padding-top: 24px; }
+section + section { margin-top: 48px; border-top: 1px solid var(--line); }
+h1 { font-size: 30px; line-height: 1.2; margin: 16px 0 8px; }
+h2 { font-size: 21px; line-height: 1.3; margin: 36px 0 8px; }
+p, ul, ol { margin: 0 0 14px; }
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<main>
+<nav>
+<a href="#en" lang="en">English</a>
+<a href="#zh-Hant" lang="zh-Hant">繁體中文</a>
+<a href="#zh-Hans" lang="zh-Hans">简体中文</a>
+<a href="#ja" lang="ja">日本語</a>
+</nav>
+<section id="en" lang="en">
+<h1>VMCFacial Privacy Policy</h1>
+<p>Effective November 27, 2026</p>
+<p>VMCFacial is an app for iPhone and iPad made by Tse Cheng (HIIIO Digital). It tracks your face with the front camera and sends the motion to avatar software on your own computer.</p>
+<p><strong>We do not collect any data.</strong> The app has no account, no server of ours, no advertising and no analytics, and it contains no third-party code. Nothing the app does is sent to us.</p>
+<h2>Camera and face data</h2>
+<p>VMCFacial uses the front camera through Apple's ARKit face tracking. While the app is open, ARKit gives it numbers that describe your face at that moment:</p>
+<ul>
+<li>how strongly each of 52 expressions is formed (for example "jaw open" or "left eye closed"),</li>
+<li>the rotation of your head and the direction of your eyes,</li>
+<li>a 3D mesh of the shape of your face.</li>
+</ul>
+<p>The app uses this face data for two things only:</p>
+<ul>
+<li>to draw the preview on your iPhone: the 3D face, your VRM avatar, or the camera view with the face mesh;</li>
+<li>to send your expressions, head rotation and eye rotation to the computer you choose or, in iFacialMocap mode, to a program on your network that asks for them, as described below.</li>
+</ul>
+<p>Face data is handled in the iPhone's memory as each camera frame arrives and is then discarded. The app does not save camera images, depth data or the face mesh, and it never sends them anywhere.</p>
+<p>The app does not use face data to identify you, to sign you in, for advertising or marketing, or to build a profile of you. It is not given to advertising platforms, analytics providers, data brokers or anyone else.</p>
+<p><strong>Read Eyebrows from the Camera</strong> (a setting, on unless you turn it off): the app reads the brightness of narrow strips of the camera image above each eye to follow your eyebrows, and the depth camera's reading of the same spots to tell when something is covering them. This is done in memory. No image or depth data is saved or sent.</p>
+<p><strong>Calibration</strong>: when you calibrate, the app stores on your iPhone the value each expression has while your face is relaxed, so that a relaxed face counts as neutral. These are a few dozen numbers between 0 and 1. They stay on the iPhone and are replaced the next time you calibrate.</p>
+<h2>What is sent, and where</h2>
+<p>Whenever an address is filled in at the top of the screen, the app sends the following to that IP address and port, over your local network:</p>
+<ul>
+<li>the 52 expression values,</li>
+<li>your head rotation,</li>
+<li>your eye rotation.</li>
+</ul>
+<p>It is sent as VMC protocol (OSC over UDP), about 60 times a second.</p>
+<ul>
+<li>No camera image, face mesh, name, account or device identifier is sent.</li>
+<li>In VMC mode it goes only to the address you chose. We never receive it.</li>
+<li>The VMC protocol is not encrypted, so use it on a network you trust.</li>
+<li>What the receiving software does with the data is up to that software and you.</li>
+</ul>
+<p><strong>Sending starts by itself.</strong> There is no start button. The app begins sending as soon as you pick a computer in "Find Computers" or finish typing an address, and it keeps sending while the app is open. The address is saved on your iPhone, so the next time you open the app it sends to that computer straight away, without you pressing anything. While it is sending, the top of the screen shows the address and "Sending".</p>
+<p><strong>To stop sending</strong> in VMC mode, delete the address at the top of the screen and tap Done on the keyboard, or leave the app. Nothing is sent while the app is in the background. With no address filled in, the app still tracks your face to draw the preview, but sends nothing. iFacialMocap mode is different: see below.</p>
+<p><strong>iFacialMocap mode.</strong> The switch under the address changes what is sent from VMC protocol to the format of the iFacialMocap app (plain text over UDP, not encrypted either), for avatar software that expects that format. It carries the same expression, head and eye values. In this mode the data reaches a computer in two ways:</p>
+<ul>
+<li>It is sent to the address filled in at the top of the screen, as above.</li>
+<li>It is sent to a program that asks for it. Some avatar software is given your iPhone's address and asks the iPhone for the data. While the app is open in iFacialMocap mode, it listens on UDP port 49983 for this request and then sends to the device that asked, on the port shown at the top of the screen. It does this with or without an address filled in, and it does not ask you first. Any device on the same network that sends the request receives the data. The screen shows "Sending", but not which device it is.</li>
+</ul>
+<p>So in iFacialMocap mode, deleting the address does not stop sending. To stop, switch back to VMC (and delete the address if you want nothing sent), or leave the app. Use iFacialMocap mode only on a network you trust. In VMC mode, which is the default, the app does not listen for requests.</p>
+<h2>Finding computers on your network</h2>
+<p>When you open "Find Computers", the app asks each address on your iPhone's local network for its name and checks whether it answers on the VMC port. The resulting list is shown to you and is not saved or sent anywhere. Only the address you pick is saved on your iPhone.</p>
+<p>iOS asks for your permission before an app can reach your local network. If you decline, you can still type the computer's address yourself, but iOS will not let the app send to it until you allow local network access.</p>
+<h2>What is stored on your iPhone</h2>
+<ul>
+<li>Your settings: the computer's address and port, options, weights and calibration.</li>
+<li>A copy of the VRM model file you import, and its file name.</li>
+</ul>
+<p>This stays on your iPhone and may be included in your own device backups. To remove the model, use "Remove Model" in Settings. Deleting the app deletes everything it stored.</p>
+<h2>Permissions</h2>
+<p>VMCFacial asks for Camera access (to track your face) and Local Network access (to find and send to your computer). You can withdraw either at any time in the iOS Settings app, under VMCFacial. Without camera access the app cannot track your face.</p>
+<h2>Children</h2>
+<p>The app does not collect personal information from anyone, including children.</p>
+<h2>Keeping and deleting data</h2>
+<p>We hold no data about you, so there is nothing for us to delete, correct or hand over. Everything the app stores is on your iPhone and is under your control, as described above.</p>
+<h2>Changes to this policy</h2>
+<p>If this policy changes, the new version will be published at this address with a new effective date.</p>
+<h2>Contact</h2>
+<p>Questions about this policy: <a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a></p>
+</section>
+<section id="zh-Hant" lang="zh-Hant">
+<h1>VMCFacial 隱私權政策</h1>
+<p>生效日期：2026 年 11 月 27 日</p>
+<p>VMCFacial 是由 Tse Cheng (HIIIO Digital) 製作的 iPhone 與 iPad App。它用前鏡頭追蹤你的臉，並把動作傳給你自己電腦上的虛擬角色軟體。</p>
+<p><strong>我們不蒐集任何資料。</strong> 這個 App 沒有帳號、沒有我們的伺服器、沒有廣告、沒有數據分析，也不含任何第三方程式碼。App 做的任何事都不會傳給我們。</p>
+<h2>鏡頭與臉部資料</h2>
+<p>VMCFacial 透過 Apple 的 ARKit 臉部追蹤使用前鏡頭。App 開啟時，ARKit 會提供描述你當下臉部的數值：</p>
+<ul>
+<li>52 個表情各自的程度（例如「張嘴」或「閉左眼」），</li>
+<li>頭部的轉動與視線的方向，</li>
+<li>臉部形狀的 3D 網格。</li>
+</ul>
+<p>App 只把這些臉部資料用在兩件事：</p>
+<ul>
+<li>在 iPhone 上顯示預覽：3D 臉、你的 VRM 角色，或疊上臉部網格的鏡頭畫面；</li>
+<li>把你的表情、頭部轉動與眼球轉動傳到你選擇的電腦；在 iFacialMocap 模式下，也會傳給同一個網路上向 iPhone 要求資料的程式（見下一節）。</li>
+</ul>
+<p>臉部資料在每一格鏡頭畫面到達時於 iPhone 的記憶體中處理，用完即丟。App 不會儲存鏡頭影像、深度資料或臉部網格，也絕不會把它們傳到任何地方。</p>
+<p>App 不會用臉部資料辨識你的身分、登入驗證、投放廣告或行銷，也不會用來建立你的個人檔案。這些資料不會提供給廣告平台、數據分析業者、資料仲介或任何其他人。</p>
+<p><strong>從鏡頭畫面量眉毛</strong>（設定中的選項，預設開啟，可以關閉）：App 會讀取鏡頭畫面中每隻眼睛上方幾條細長區域的亮度，用來追蹤眉毛的位置，並讀取深度鏡頭在同一處量到的距離，判斷眉毛有沒有被遮住。這只在記憶體中進行，不會儲存或傳出任何影像或深度資料。</p>
+<p><strong>校正</strong>：按下校正時，App 會把你臉部放鬆時各個表情的數值存在 iPhone 上，讓放鬆的臉被當成中性表情。這是幾十個介於 0 到 1 之間的數字，只留在 iPhone 上，下次校正時會被取代。</p>
+<h2>傳送什麼、傳到哪裡</h2>
+<p>只要畫面上方填了位址，App 就會透過你的區域網路，把下列資料傳到那個 IP 位址與 Port：</p>
+<ul>
+<li>52 個表情數值，</li>
+<li>頭部轉動，</li>
+<li>眼球轉動。</li>
+</ul>
+<p>資料以 VMC 協定（OSC over UDP）傳送，每秒約 60 次。</p>
+<ul>
+<li>不會傳送鏡頭影像、臉部網格、姓名、帳號或裝置識別碼。</li>
+<li>在 VMC 模式下，資料只會傳到你選的位址。我們不會收到。</li>
+<li>VMC 協定沒有加密，請在你信任的網路上使用。</li>
+<li>接收端軟體如何使用這些資料，由該軟體與你自己決定。</li>
+</ul>
+<p><strong>傳送會自動開始。</strong> App 沒有開始鈕。你在「尋找電腦」選了電腦，或輸入完位址，App 就開始傳送，而且只要 App 開著就會一直傳。位址會存在 iPhone 上，所以下次打開 App 時，不用按任何東西，就會直接傳到那台電腦。傳送時，畫面上方會顯示位址和「傳送中」。</p>
+<p><strong>要停止傳送</strong>（VMC 模式），把畫面上方的位址刪掉並按鍵盤上的「完成」，或離開 App。App 在背景時不會傳送任何資料。沒有填位址時，App 仍會追蹤你的臉來顯示預覽，但不會傳出任何資料。iFacialMocap 模式不同，見下面。</p>
+<p><strong>iFacialMocap 模式。</strong> 位址下方的開關可以把送出的格式從 VMC 協定改成 iFacialMocap App 的格式（UDP 純文字，同樣沒有加密），給只接受這種格式的角色軟體使用。內容同樣是表情、頭部與眼球的數值。在這個模式下，資料有兩種方式送到電腦：</p>
+<ul>
+<li>送到畫面上方填的位址，和上面說的一樣。</li>
+<li>送給向 iPhone 要求資料的程式。有些角色軟體是由你在電腦上輸入 iPhone 的位址，再由它向 iPhone 要資料。App 開著而且在 iFacialMocap 模式時，會在 UDP 49983 Port 等候這種要求，收到後就把資料送給提出要求的那台裝置（送到畫面上方顯示的 Port）。不論有沒有填位址都會這樣做，而且不會先問你。同一個網路上任何送出這種要求的裝置都會收到資料。畫面會顯示「傳送中」，但不會顯示是哪一台裝置。</li>
+</ul>
+<p>所以在 iFacialMocap 模式下，刪掉位址並不會停止傳送。要停止，請切回 VMC（不想送出任何資料的話再把位址刪掉），或離開 App。請只在你信任的網路上使用 iFacialMocap 模式。在 VMC 模式（預設）下，App 不會等候這種要求。</p>
+<h2>尋找網路上的電腦</h2>
+<p>打開「尋找電腦」時，App 會向你 iPhone 所在區域網路上的每個位址詢問名稱，並檢查它在 VMC Port 上有沒有回應。得到的清單只顯示給你看，不會儲存，也不會傳到任何地方。只有你選的那個位址會存在 iPhone 上。</p>
+<p>App 要連到區域網路之前，iOS 會先徵求你的同意。如果你拒絕，仍然可以自己輸入電腦的位址，但在你允許區域網路存取之前，iOS 不會讓 App 傳送資料到那台電腦。</p>
+<h2>存在 iPhone 上的資料</h2>
+<ul>
+<li>你的設定：電腦的位址與 Port、各項選項、權重與校正。</li>
+<li>你匯入的 VRM 模型檔的副本，以及它的檔名。</li>
+</ul>
+<p>這些資料留在你的 iPhone 上，可能會包含在你自己的裝置備份裡。要移除模型，請用設定裡的「移除模型」。刪除 App 會刪掉它儲存的所有資料。</p>
+<h2>權限</h2>
+<p>VMCFacial 會要求相機權限（用來追蹤臉部）和區域網路權限（用來尋找電腦並傳送資料）。你隨時可以在 iOS「設定」App 的 VMCFacial 項目中收回任一項權限。沒有相機權限時，App 無法追蹤臉部。</p>
+<h2>兒童</h2>
+<p>App 不會向任何人蒐集個人資料，包括兒童。</p>
+<h2>資料的保存與刪除</h2>
+<p>我們沒有持有任何關於你的資料，因此沒有資料需要由我們刪除、更正或提供。App 儲存的一切都在你的 iPhone 上，由你自己掌控（見上文）。</p>
+<h2>政策的變更</h2>
+<p>本政策如有變更，新版本會公布在同一個網址，並更新生效日期。</p>
+<h2>聯絡方式</h2>
+<p>對本政策有任何問題，請來信：<a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a></p>
+</section>
+<section id="zh-Hans" lang="zh-Hans">
+<h1>VMCFacial 隐私政策</h1>
+<p>生效日期：2026 年 11 月 27 日</p>
+<p>VMCFacial 是由 Tse Cheng (HIIIO Digital) 制作的 iPhone 与 iPad App。它用前置摄像头追踪你的脸，并把动作发送给你自己电脑上的虚拟形象软件。</p>
+<p><strong>我们不收集任何数据。</strong> 这个 App 没有账号、没有我们的服务器、没有广告、没有数据分析，也不包含任何第三方代码。App 做的任何事都不会发送给我们。</p>
+<h2>摄像头与面部数据</h2>
+<p>VMCFacial 通过 Apple 的 ARKit 面部追踪使用前置摄像头。App 打开时，ARKit 会提供描述你当下面部的数值：</p>
+<ul>
+<li>52 个表情各自的程度（例如“张嘴”或“闭左眼”），</li>
+<li>头部的转动与视线的方向，</li>
+<li>面部形状的 3D 网格。</li>
+</ul>
+<p>App 只把这些面部数据用于两件事：</p>
+<ul>
+<li>在 iPhone 上显示预览：3D 脸、你的 VRM 形象，或叠加面部网格的摄像头画面；</li>
+<li>把你的表情、头部转动与眼球转动发送到你选择的电脑；在 iFacialMocap 模式下，也会发送给同一网络上向 iPhone 请求数据的程序（见下一节）。</li>
+</ul>
+<p>面部数据在每一帧摄像头画面到达时于 iPhone 的内存中处理，用完即弃。App 不会保存摄像头画面、深度数据或面部网格，也绝不会把它们发送到任何地方。</p>
+<p>App 不会用面部数据识别你的身份、登录验证、投放广告或营销，也不会用来建立你的个人档案。这些数据不会提供给广告平台、数据分析服务商、数据中间商或任何其他人。</p>
+<p><strong>从镜头画面量眉毛</strong>（设置中的选项，默认开启，可以关闭）：App 会读取摄像头画面中每只眼睛上方几条细长区域的亮度，用来追踪眉毛的位置，并读取深度摄像头在同一处测到的距离，判断眉毛有没有被遮住。这只在内存中进行，不会保存或发送任何图像或深度数据。</p>
+<p><strong>校正</strong>：点击校正时，App 会把你面部放松时各个表情的数值保存在 iPhone 上，让放松的脸被当作中性表情。这是几十个介于 0 到 1 之间的数字，只留在 iPhone 上，下次校正时会被替换。</p>
+<h2>发送什么、发送到哪里</h2>
+<p>只要画面上方填了地址，App 就会通过你的局域网，把下列数据发送到那个 IP 地址与端口：</p>
+<ul>
+<li>52 个表情数值，</li>
+<li>头部转动，</li>
+<li>眼球转动。</li>
+</ul>
+<p>数据以 VMC 协议（OSC over UDP）发送，每秒约 60 次。</p>
+<ul>
+<li>不会发送摄像头画面、面部网格、姓名、账号或设备标识符。</li>
+<li>在 VMC 模式下，数据只会发送到你选的地址。我们不会收到。</li>
+<li>VMC 协议没有加密，请在你信任的网络上使用。</li>
+<li>接收端软件如何使用这些数据，由该软件与你自己决定。</li>
+</ul>
+<p><strong>发送会自动开始。</strong> App 没有开始按钮。你在“查找电脑”选了电脑，或输入完地址，App 就开始发送，而且只要 App 开着就会一直发送。地址会保存在 iPhone 上，所以下次打开 App 时，不用点任何东西，就会直接发送到那台电脑。发送时，画面上方会显示地址和“发送中”。</p>
+<p><strong>要停止发送</strong>（VMC 模式），把画面上方的地址删掉并点键盘上的“完成”，或离开 App。App 在后台时不会发送任何数据。没有填地址时，App 仍会追踪你的脸来显示预览，但不会发送任何数据。iFacialMocap 模式不同，见下面。</p>
+<p><strong>iFacialMocap 模式。</strong> 地址下方的开关可以把发送的格式从 VMC 协议改成 iFacialMocap App 的格式（UDP 纯文本，同样没有加密），供只接受这种格式的形象软件使用。内容同样是表情、头部与眼球的数值。在这个模式下，数据有两种方式到达电脑：</p>
+<ul>
+<li>发送到画面上方填的地址，和上面说的一样。</li>
+<li>发送给向 iPhone 请求数据的程序。有些形象软件是由你在电脑上输入 iPhone 的地址，再由它向 iPhone 请求数据。App 开着并且处于 iFacialMocap 模式时，会在 UDP 49983 端口等候这种请求，收到后就把数据发送给提出请求的那台设备（发送到画面上方显示的端口）。不论有没有填地址都会这样做，而且不会先询问你。同一网络上任何发出这种请求的设备都会收到数据。画面会显示“发送中”，但不会显示是哪一台设备。</li>
+</ul>
+<p>所以在 iFacialMocap 模式下，删掉地址并不会停止发送。要停止，请切回 VMC（不想发送任何数据的话再把地址删掉），或离开 App。请只在你信任的网络上使用 iFacialMocap 模式。在 VMC 模式（默认）下，App 不会等候这种请求。</p>
+<h2>查找网络上的电脑</h2>
+<p>打开“查找电脑”时，App 会向你 iPhone 所在局域网上的每个地址询问名称，并检查它在 VMC 端口上有没有响应。得到的列表只显示给你看，不会保存，也不会发送到任何地方。只有你选的那个地址会保存在 iPhone 上。</p>
+<p>App 要连接局域网之前，iOS 会先征求你的同意。如果你拒绝，仍然可以自己输入电脑的地址，但在你允许本地网络访问之前，iOS 不会让 App 向那台电脑发送数据。</p>
+<h2>保存在 iPhone 上的数据</h2>
+<ul>
+<li>你的设置：电脑的地址与端口、各项选项、权重与校正。</li>
+<li>你导入的 VRM 模型文件的副本，以及它的文件名。</li>
+</ul>
+<p>这些数据留在你的 iPhone 上，可能会包含在你自己的设备备份里。要移除模型，请使用设置里的“移除模型”。删除 App 会删掉它保存的所有数据。</p>
+<h2>权限</h2>
+<p>VMCFacial 会请求相机权限（用来追踪面部）和本地网络权限（用来查找电脑并发送数据）。你随时可以在 iOS“设置”App 的 VMCFacial 项目中收回任一项权限。没有相机权限时，App 无法追踪面部。</p>
+<h2>儿童</h2>
+<p>App 不会向任何人收集个人信息，包括儿童。</p>
+<h2>数据的保存与删除</h2>
+<p>我们没有持有任何关于你的数据，因此没有数据需要由我们删除、更正或提供。App 保存的一切都在你的 iPhone 上，由你自己掌控（见上文）。</p>
+<h2>政策的变更</h2>
+<p>本政策如有变更，新版本会发布在同一个网址，并更新生效日期。</p>
+<h2>联系方式</h2>
+<p>对本政策有任何问题，请来信：<a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a></p>
+</section>
+<section id="ja" lang="ja">
+<h1>VMCFacial プライバシーポリシー</h1>
+<p>施行日：2026年11月27日</p>
+<p>VMCFacial は Tse Cheng (HIIIO Digital) が制作した iPhone・iPad 向けアプリです。前面カメラで顔をトラッキングし、その動きをご自身のパソコン上のアバターソフトへ送信します。</p>
+<p><strong>当方はいかなるデータも収集しません。</strong> このアプリにはアカウントも、当方のサーバーも、広告も、アクセス解析もなく、第三者のコードも含まれていません。アプリの動作によって当方に何かが送信されることはありません。</p>
+<h2>カメラと顔のデータ</h2>
+<p>VMCFacial は Apple の ARKit フェイストラッキングを通じて前面カメラを使用します。アプリを開いている間、ARKit はその時点の顔を表す数値をアプリに渡します。</p>
+<ul>
+<li>52 種類の表情それぞれの強さ（「口を開ける」「左目を閉じる」など）</li>
+<li>頭の回転と視線の向き</li>
+<li>顔の形の 3D メッシュ</li>
+</ul>
+<p>アプリはこの顔のデータを次の 2 つの目的にのみ使用します。</p>
+<ul>
+<li>iPhone 上にプレビューを表示するため（3D の顔、VRM アバター、または顔のメッシュを重ねたカメラ映像）</li>
+<li>表情、頭の回転、目の回転を、選択したパソコンへ送信するため。iFacialMocap モードでは、同じネットワーク上で iPhone にデータを要求したソフトにも送信します（次の項を参照）</li>
+</ul>
+<p>顔のデータは、カメラのフレームが届くたびに iPhone のメモリ上で処理され、その後破棄されます。アプリはカメラ映像、深度データ、顔のメッシュを保存せず、どこにも送信しません。</p>
+<p>アプリは顔のデータを、個人の識別、認証、広告、マーケティング、プロフィールの作成には使用しません。広告プラットフォーム、解析事業者、データブローカー、その他の第三者に提供することもありません。</p>
+<p><strong>カメラ映像から眉を読み取る</strong>（設定項目、既定ではオン。オフにできます）：眉の位置を追うために、カメラ映像の両目の上の細い帯状の領域の明るさを読み取り、眉が何かで隠れていないかを判断するために、同じ位置の深度カメラの値を読み取ります。処理はメモリ上でのみ行われ、画像や深度データは保存も送信もされません。</p>
+<p><strong>キャリブレーション</strong>：キャリブレーションを行うと、リラックスした顔を基準にするため、そのときの各表情の値が iPhone に保存されます。これは 0 から 1 までの数十個の数値で、iPhone 内にのみ保存され、次回のキャリブレーションで上書きされます。</p>
+<h2>何を、どこへ送信するか</h2>
+<p>画面上部にアドレスが入力されている間、アプリはその IP アドレスとポートへ、ローカルネットワーク経由で次のデータを送信します。</p>
+<ul>
+<li>52 種類の表情の値</li>
+<li>頭の回転</li>
+<li>目の回転</li>
+</ul>
+<p>データは VMC プロトコル（OSC over UDP）で、毎秒約 60 回送信されます。</p>
+<ul>
+<li>カメラ映像、顔のメッシュ、氏名、アカウント、デバイス識別子は送信されません。</li>
+<li>VMC モードでは、送信先は選択したアドレスのみです。当方が受け取ることはありません。</li>
+<li>VMC プロトコルは暗号化されていません。信頼できるネットワークでご利用ください。</li>
+<li>受信側のソフトがデータをどう扱うかは、そのソフトとご自身の判断によります。</li>
+</ul>
+<p><strong>送信は自動で始まります。</strong> 開始ボタンはありません。「コンピュータを探す」でパソコンを選ぶか、アドレスを入力し終えると送信が始まり、アプリを開いている間は送信が続きます。アドレスは iPhone に保存されるため、次回からはアプリを開くと、何も押さなくてもそのパソコンへの送信がすぐに始まります。送信中は、画面上部にアドレスと「送信中」が表示されます。</p>
+<p><strong>送信を止めるには</strong>（VMC モード）、画面上部のアドレスを消去してキーボードの「完了」をタップするか、アプリを離れます。アプリがバックグラウンドにある間は何も送信されません。アドレスが入力されていないときも、プレビューを表示するために顔のトラッキングは行われますが、何も送信されません。iFacialMocap モードでは異なります（下記参照）。</p>
+<p><strong>iFacialMocap モード。</strong> アドレスの下のスイッチで、送信する形式を VMC プロトコルから iFacialMocap アプリの形式（UDP のテキスト。こちらも暗号化されていません）に切り替えられます。この形式だけを受け付けるアバターソフト向けです。送信する内容は同じく、表情、頭、目の値です。このモードでは、データは次の 2 通りでパソコンに届きます。</p>
+<ul>
+<li>画面上部に入力したアドレスへ送信されます（上記のとおり）。</li>
+<li>iPhone にデータを要求したソフトへ送信されます。アバターソフトの中には、パソコン側に iPhone のアドレスを入力し、ソフトから iPhone にデータを要求するものがあります。アプリを iFacialMocap モードで開いている間は、UDP ポート 49983 でこの要求を待ち受け、要求してきたデバイスへ、画面上部に表示されているポート宛てに送信します。アドレスの入力の有無にかかわらず行われ、事前の確認はありません。同じネットワーク上でこの要求を送ったデバイスは、どれでもデータを受け取ります。画面には「送信中」と表示されますが、どのデバイスに送っているかは表示されません。</li>
+</ul>
+<p>そのため iFacialMocap モードでは、アドレスを消去しても送信は止まりません。止めるには、VMC に切り替える（何も送信したくない場合はアドレスも消去する）か、アプリを離れてください。iFacialMocap モードは、信頼できるネットワークでのみご利用ください。VMC モード（既定）では、アプリはこの要求を待ち受けません。</p>
+<h2>ネットワーク上のパソコンの検索</h2>
+<p>「コンピュータを探す」を開くと、アプリは iPhone が接続しているローカルネットワーク上の各アドレスに名前を問い合わせ、VMC ポートで応答があるかを確認します。結果の一覧は画面に表示されるだけで、保存もどこかへの送信もされません。選択したアドレスのみが iPhone に保存されます。</p>
+<p>アプリがローカルネットワークにアクセスする前に、iOS が許可を求めます。許可しない場合でも、パソコンのアドレスを手入力することはできますが、ローカルネットワークへのアクセスを許可するまで、iOS はアプリからそのパソコンへの送信を行いません。</p>
+<h2>iPhone に保存されるデータ</h2>
+<ul>
+<li>設定：パソコンのアドレスとポート、各種オプション、ウェイト、キャリブレーション</li>
+<li>読み込んだ VRM モデルファイルのコピーと、そのファイル名</li>
+</ul>
+<p>これらは iPhone 内に保存され、ご自身のデバイスのバックアップに含まれる場合があります。モデルを削除するには、設定の「モデルを削除」を使用してください。アプリを削除すると、アプリが保存したすべてのデータが削除されます。</p>
+<h2>アクセス許可</h2>
+<p>VMCFacial はカメラ（顔のトラッキングのため）とローカルネットワーク（パソコンの検索とデータ送信のため）へのアクセスを求めます。どちらも iOS の「設定」アプリの VMCFacial の項目からいつでも取り消せます。カメラへのアクセスがない場合、アプリは顔をトラッキングできません。</p>
+<h2>お子様について</h2>
+<p>アプリは、お子様を含め、どなたからも個人情報を収集しません。</p>
+<h2>データの保存と削除</h2>
+<p>当方はお客様に関するデータを一切保有していないため、当方が削除、訂正、開示すべきデータはありません。アプリが保存するものはすべてお客様の iPhone 内にあり、上記のとおりご自身で管理できます。</p>
+<h2>ポリシーの変更</h2>
+<p>本ポリシーを変更する場合は、新しい版を同じアドレスに掲載し、施行日を更新します。</p>
+<h2>お問い合わせ</h2>
+<p>本ポリシーに関するご質問：<a href="mailto:studio@hiiiodigital.com">studio@hiiiodigital.com</a></p>
+</section>
+</main>
+</body>
+</html>
